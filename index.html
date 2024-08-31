@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
      <script src="app.js" defer></script>
     <title>Cookie Click</title>
 </head>
 <body>
-    
-    <section class="cookie-section">
-        <img src="https://pngimg.com/uploads/cookie/cookie_PNG13656.png" class="cookie" id="cookie"/>
+    <header>
+        <h1>Cookie Click</h1>
+        <div class="settings">
+            <i class="fa-solid fa-gear settings-icon"></i>
+        </div>
+    </header>
+
+    <section class="cookie-section" id="cookie-section">
+        <img src="./img/cookie.png" class="cookie" id="cookie"/>
         <section class="cookie-stats" id="cookie-stats">
             <p><span id="cookie-count"></span> Cookies</p>
-            <p><span id="cookie-cps" class="cookie-cps"></span> Cookies Per Second</p>
+            <p><span id="cookie-cps" class="cookie-cps"></span> Cookie Power</p>
         </section>
     </section>
 
     <section class="shop" id="shop">
     </section>
+
+    <footer>
+    </footer>
 
 </body>
 </html>

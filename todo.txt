@@ -1,0 +1,4 @@
+ - add offset for particle animation
+ - image/pattern background
+ - styling shop & text
+ - popout settings menu (look at how you did pomodoro project settings menu)
