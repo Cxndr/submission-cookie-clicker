@@ -5,7 +5,13 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(206, 174, 140);
-
+    background-image: 
+        linear-gradient(
+            rgba(206, 174, 140, 0.9),
+            rgba(74, 52, 19, 0.5)
+        ),
+        /* url(https://img.freepik.com/premium-vector/vector-seamless-pattern-with-cookies-colorful_566075-619.jpg?w=826), */
+        url(https://www.shutterstock.com/image-vector/chocolate-chip-cookies-doodle-seamless-600nw-2279158739.jpg);
     height: 100svh;
     margin: 0;
     padding: 0;
@@ -21,6 +27,14 @@ header {
     grid-column: 1 / 3;
     text-align: center;
 }
+header h1 {
+    font-size: 5rem;
+    margin: 0;
+    padding-top: 2rem;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 1));
+    font-family: "Playwrite CU", cursive;
+    font-optical-sizing: auto;
+}
 .settings-icon {
     position: absolute;
     top: 1rem;
@@ -32,12 +46,21 @@ header {
 .settings-icon:hover {
     transform: rotate(208deg) scale(1.1);
 }
-.settings-icon:before {
+.cookiefill-icon:before {
     background-image: url("./img/cookie.png");
     background-size: 100%;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke:2px #422e16d3;
+}
+.cookiefill-text {
+    background-image: url("./img/cookie-fill.png");
+    background-size: 10%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* -webkit-text-stroke:2px #422e16d3; */
 }
 
 .cookie-section {
@@ -52,24 +75,62 @@ header {
     grid-column: 2 / 3;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: space-evenly;
+    /* background-color: pink; */
+    gap: 1rem;
+    row-gap: 1rem;
+    overflow-y: auto;
+    height: 100%;
 }
 .upgrade-container {
-    width: 50%;
+    width: 18rem;
+    background-color: #3e2f289f;
+    padding: 1rem;
+    color: #f4debf;
+}
+.upgrade-container h3 {
+    margin: 0;
+    padding: 0;
+}
+.upgrade-container img {
+    height: 6rem;
+    float: right;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+}
+.upgrade-container button {
+    font-size: 1.2rem;
+    width: 5rem;
 }
 
 .cookie {
     width: 50%;
     max-width: 50rem;
     transition: width 0.07s ease-in-out;
+    user-select: none;
+    filter:drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.363))
 }
 .cookie-click-anim {
     width: 54%;
 }
 .cookie-particle {
-    position: absolute;
+    position: fixed;
     opacity: 1;
     top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
-    transition: opacity 1s, top 2s, left 2s;
+    transition: opacity 0.75s ease-in, top 0.75s ease-out, left 0.75s ease-out;
+    user-select: none;
+}
+
+.cookie-stats {
+    font-size: 2rem;
+    font-weight: bold;
+    color:rgb(59, 45, 26);
+    filter: drop-shadow(0 0 12px #17171773)
+}
+#cookie-count, #cookie-cps {
+    color: rgb(217, 194, 169);
+    filter: drop-shadow(0 0 10px #ffffff7b)
 }

@@ -10,11 +10,9 @@ const cookieSection = document.getElementById('cookie-section');
 function getLocalStorage() {
     if (localStorage.getItem("cookieCount")) {
         cookieCount = parseInt(localStorage.getItem("cookieCount"));
-        console.log("fetched: ",cookieCount);
     }
     if (localStorage.getItem("cookieCPS") != null) {
         cookieCPS = parseInt(localStorage.getItem("cookieCPS"));
-        console.log("fetched: ", cookieCPS);
     }
     updateCookiesUI();
 }
@@ -39,9 +37,15 @@ async function getShop() {
         const heading = document.createElement('h3');
         heading.textContent = `${upgrade.name}`
         upgradeDiv.appendChild(heading);
+        const image = document.createElement('img');
+        image.src = `./img/icons/${upgrade.id}.png`;
+        image.alt = `${upgrade.name} icon`;
+        upgradeDiv.appendChild(image);
         const content = document.createElement('p');
-        content.textContent = `Cost: ${upgrade.cost} CPS: ${upgrade.increase}`;
+        content.innerHTML = `<b>Cost:</b> ${upgrade.cost} </br><b>CPS:</b> ${upgrade.increase}`;
         upgradeDiv.appendChild(content);
+        
+
 
         const upgradeButton = document.createElement('button');
         upgradeButton.textContent = "buy";
@@ -52,33 +56,37 @@ async function getShop() {
 }
 
 function buyUpgrade(upgrade) {
-    console.log("buying upgrade", upgrade);
     cookieCount -= upgrade.cost;
     cookieCPS += upgrade.increase;
     setLocalStorage();
     updateCookiesUI();
 }
-function cookieClickAnim() {
+function cookieClickAnim(x,y,minSize, maxSize) {
     cookieElem.classList.add("cookie-click-anim");
     setTimeout(function(){
         cookieElem.classList.remove("cookie-click-anim");
     }, 100);
     const cookieParticle = document.createElement('span');
     cookieParticle.textContent = "🍪";
-    const minSize = 0.5;
-    const maxSize = 5;
     let particleSize = Math.random()*(maxSize-minSize)+maxSize;
     cookieParticle.classList.add ("cookie-particle")
-    cookieParticle.style.fontSize = particleSize;
+    cookieParticle.style.fontSize = particleSize+"rem";
+    cookieParticle.style.left = x + "px";
+    cookieParticle.style.top = y + "px";
     cookieSection.appendChild(cookieParticle);
     
-    // transition to animate random direction move and opacity
-    let randTop = Math.floor(Math.random()*90+5);
-    let randLeft = Math.floor(Math.random()*90+5);
+    // transition to animate random direction
+    const distance = 100; // setting for how far to travel
+    const angle = Math.random()*2*Math.PI // get angle in radians:-
+        // (0 to 1) * 2 * 3.14 = (0 to 6.28 radians) = (0° to 360°)
+    const xOffset = Math.floor(Math.cos(angle) * distance);
+    const yOffset = Math.floor(Math.sin(angle) * distance);
     setTimeout(function() {
         cookieParticle.style.opacity = "0";
-        cookieParticle.style.top = Math.floor(Math.random()*90+5)+'%';
-        cookieParticle.style.left = Math.floor(Math.random()*90+5)+'%';
+        cookieParticle.style.left = (x + xOffset)+"px";
+        console.log("x_loc",x+xOffset);
+        cookieParticle.style.top = (y + yOffset)+"px"
+        console.log("y_loc:", y+yOffset);
     },50);
 }
 
@@ -93,11 +101,17 @@ function updateCookies() {
     setLocalStorage();
     updateCookiesUI();
 }
-cookieElem.addEventListener('mousedown', function() {
+cookieElem.addEventListener('mousedown', function(event) {
     cookieCount++;
     setLocalStorage();  
     updateCookiesUI();
-    cookieClickAnim();
+    for(let i=0; i<3; i++) {
+        cookieClickAnim(event.clientX,event.clientY, 0.15,0.7);
+    }
+ 
+    for(let i=0; i<10; i++) {
+        cookieClickAnim(event.clientX, event.clientY,0.05,0.25);
+    }
 })
 
 // run
