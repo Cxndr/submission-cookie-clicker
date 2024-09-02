@@ -147,7 +147,7 @@ header h1 {
     justify-content: space-around;
 }
 .cookie {
-    width: 45%;
+    width: 40%;
     max-width: 40rem;
     transition: transform 0.07s ease-in-out;
     user-select: none;
