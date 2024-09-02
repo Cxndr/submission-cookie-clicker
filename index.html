@@ -3,35 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="style.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
-     <script src="app.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
     <title>Cookie Click</title>
 </head>
 <body>
-    <header>
-        <h1 class="cookiefill-text">Cookie Click</h1>
-        <div class="settings">
+    <main>
+        <header>
+            <h1 class="cookiefill-text">Cookie Click</h1>
+        </header>
+        <div class="settings-button" id="settings-button">
             <i class="fa-solid fa-gear settings-icon cookiefill-icon"></i>
         </div>
-    </header>
 
-    <section class="cookie-section" id="cookie-section">
-        <img src="./img/cookie.png" class="cookie" id="cookie"/>
-        <section class="cookie-stats" id="cookie-stats">
-            <p>Cookies: </br><span id="cookie-count"></span></p>
-            <p>Cookie Power:</br><span id="cookie-cps" class="cookie-cps"></span></p>
+        <section class="cookie-section" id="cookie-section">
+            <img src="./img/cookie.png" class="cookie" id="cookie"/>
+            <section class="cookie-stats" id="cookie-stats">
+                <p>Cookies</br><span id="cookie-count" class="cookie-count"></span></p>
+                <p>Cookie Power</br><span id="cookie-cps" class="cookie-cps"></span></p>
+            </section>
         </section>
-    </section>
 
-    <section class="shop" id="shop">
-    </section>
+        <section class="shop" id="shop">
+        </section>
 
-    <footer>
-    </footer>
+        <footer>
+        </footer>
+    </main>
+
+    <div class="sidebar" id="sidebar">
+        <div id="sidebar-content">
+            <h2 class="cookiefill-text">Settings</h2>
+            <button id="settings-reset">Reset Progress</button>
+            <h2 class="cookiefill-text">Stats</h2>
+            <p class="stats-title">Session Play Time</p>
+            <p class="stats" id="stats-session-time">~</p>
+            <p class="stats-title">Total Time Played</p>
+            <p class="stats" id="stats-time-played">~</p>
+            <p class="stats-title">Manual Clicks</p>
+            <p class="stats" id="stats-manual-clicks">0</p>
+        </div>
+    </div>
 
 </body>
 </html>
